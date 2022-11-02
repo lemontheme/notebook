@@ -359,6 +359,22 @@ const notebookToolsWidget: JupyterFrontEndPlugin<void> = {
   }
 };
 
+
+/**
+ * A plugin that swaps out Lab's keyboard shortcuts with those found in NB6
+ */
+const classicKeyBindings: JupyterFrontEndPlugin<void> = {
+  id: '@jupyter-notebook/notebook-extension:classic-keybindings',
+  autoStart: true,
+  requires: [INotebookShell],
+  optional: [],
+  activate: (
+    app: JupyterFrontEnd,
+    shell: INotebookShell,
+  ) => {}
+};
+
+
 /**
  * Export the plugins as default.
  */
@@ -367,7 +383,8 @@ const plugins: JupyterFrontEndPlugin<any>[] = [
   kernelLogo,
   kernelStatus,
   scrollOutput,
-  notebookToolsWidget
+  notebookToolsWidget,
+  classicKeyBindings
 ];
 
 export default plugins;
